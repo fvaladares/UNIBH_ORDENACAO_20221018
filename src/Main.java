@@ -1,5 +1,35 @@
+import ordenacao.InsertionSort;
+import ordenacao.MergeSort;
+
+import java.util.Arrays;
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        int[] A = new int[100000];
+        Random r = new Random();
+        int low = 10;
+        int high = 10000000;
+        InsertionSort is;
+        MergeSort ms;
+        for (int i = 1; i < A.length; i++) {
+            A[i] = r.nextInt(high - low) + low;
+        }
+
+        is = new InsertionSort(A.clone());
+        ms = new MergeSort(A.clone());
+        long startTime = System.currentTimeMillis();
+        is.sort();
+        System.out.println("Insertion sort time: " + (System.currentTimeMillis() - startTime));
+
+
+        System.out.println();
+
+    //    System.out.println(Arrays.toString(is.getVector()));
+        startTime = System.currentTimeMillis();
+        ms.sort(0, (A.length -1));
+        System.out.println("Mergesort time: " + (System.currentTimeMillis() - startTime));
+
+      //  System.out.println(Arrays.toString(ms.getVector()));
     }
 }
